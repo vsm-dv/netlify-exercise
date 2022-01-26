@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Divider, 
-  Typography, 
+import React, { useState } from 'react';
+import {
+  Divider,
+  Typography,
   Button,
   TextField,
   InputAdornment,
@@ -12,7 +12,6 @@ import {
 import useStyles from './styles';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import InputSenha from '../../components/InputSenha';
 
 import { useForm } from 'react-hook-form';
 import Alert from '@material-ui/lab/Alert';
@@ -27,7 +26,6 @@ function EdicaoProduto() {
   const { token } = useAuth();
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
-  const [old, setOld] = useState([]);
 
   async function onSubmit(data) {
     try {
@@ -40,7 +38,7 @@ function EdicaoProduto() {
 
       if (erro) {
         setErro(dados);
-        return; 
+        return;
       }
 
       history.push('/produtos');
@@ -58,20 +56,20 @@ function EdicaoProduto() {
         <div className={classes.formContainer}>
           <TextField label="Nome do produto" {...register('nome')} />
           <div className="columns">
-          <TextField
-            label="Preço"
-            {...register('preco')}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">R$</InputAdornment>,
-            }}
-          />
-          <TextField
-            label="Estoque"
-            {...register('estoque')}
-            InputProps={{
-              startAdornment: <InputAdornment position="start">Un</InputAdornment>,
-            }}
-          />
+            <TextField
+              label="Preço"
+              {...register('preco')}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+              }}
+            />
+            <TextField
+              label="Estoque"
+              {...register('estoque')}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">Un</InputAdornment>,
+              }}
+            />
           </div>
           <TextField label="Descrição do produto" {...register('descricao')} />
           <TextField label="Imagem" {...register('imagem')} />
@@ -80,7 +78,7 @@ function EdicaoProduto() {
       </div>
       <Divider className={classes.divider} />
       <Link to="/produtos" className={classes.link}>CANCELAR</Link>
-      <Button 
+      <Button
         className={classes.botao}
         type="submit"
       >SALVAR ALTERAÇÕES</Button>

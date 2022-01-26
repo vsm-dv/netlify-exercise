@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Divider, 
-  Typography, 
+import {
+  Divider,
+  Typography,
   Button,
   TextField,
   Snackbar,
@@ -21,16 +21,15 @@ import useLoja from '../../hook/useLoja';
 function EdicaoPerfil() {
   const classes = useStyles();
   const history = useHistory();
-  const [empty, setEmpty] = useState([]);
   const { token } = useAuth();
   const { atualizar } = useLoja();
   const { handleSubmit, register } = useForm();
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
-  
+
   useEffect(() => {
 
-  },[]);
+  }, []);
 
   async function onSubmit(data) {
     if (data.senha !== data.senhaRepetida) {
@@ -48,7 +47,7 @@ function EdicaoPerfil() {
 
       if (erro) {
         setErro(dados);
-        return; 
+        return;
       }
 
       if (dadosAtualizados.nome_loja) {
@@ -70,12 +69,12 @@ function EdicaoPerfil() {
         <TextField label="Seu nome" {...register('nome')} />
         <TextField label="Nome da loja" {...register('nome_loja')} />
         <TextField label="E-mail"  {...register('email')} />
-        <InputSenha label="Nova senha" register={() => register('senha')}/>
+        <InputSenha label="Nova senha" register={() => register('senha')} />
         <InputSenha label="Repita a nova senha" register={() => register('senhaRepetida')} />
       </div>
       <Divider className={classes.divider} />
       <Link to="/perfil" className={classes.link}>CANCELAR</Link>
-      <Button 
+      <Button
         className={classes.botao}
         type="submit"
       >EDITAR PERFIL</Button>
